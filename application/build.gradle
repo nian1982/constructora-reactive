@@ -1,0 +1,16 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    implementation project(':infra-web-entrypoint')
+    implementation project(':infra-db-adapter')
+    implementation project(':domain-usecases')
+    
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
+
+bootJar {
+    enabled = true
+    mainClass = 'com.constructora.MainApplication'
+}

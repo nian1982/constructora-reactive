@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.0' apply false
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    // --- INICIO DE LA SOLUCIÓN ---
+    // Deshabilitar la tarea bootJar para todos los subproyectos por defecto.
+    // Esto evita que Gradol intente crear un JAR ejecutable para módulos que no lo son.
+    tasks.matching { it.name == 'bootJar' }.configureEach {
+        enabled = false
+    }
+    // --- FIN DE LA SOLUCIÓN ---
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.2.0"
+        }
+    }
+    
+    dependencies {
+        implementation 'io.projectreactor:reactor-core'
+        // Lombok solo se usará en infraestructura y aplicación, no en el dominio puro.
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+}

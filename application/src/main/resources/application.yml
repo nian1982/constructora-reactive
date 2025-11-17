@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: constructora-reactiva
+  r2dbc:
+    url: r2dbc:postgresql://localhost:43216/constructora_db
+    username: constructora_user
+    password: constructora_password
+  sql:
+    init:
+      mode: always # Crea el schema cada vez que se inicia la app (útil para desarrollo)
+      schema-locations: classpath:schema.sql
+      # <-- CAMBIA 'always/never' POR 'never'
+      # schema-locations: classpath:schema.sql # <-- Puedes comentar o borrar esta línea

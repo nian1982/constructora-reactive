@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS materiales (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL UNIQUE,
+    sigla VARCHAR(2) NOT NULL CHECK (LENGTH(sigla) = 2),
+    cantidad INT NOT NULL
+);
+
+

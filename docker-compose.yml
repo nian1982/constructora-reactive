@@ -1,0 +1,15 @@
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: constructora-postgres
+    environment:
+      POSTGRES_DB: constructora_db
+      POSTGRES_USER: constructora_user
+      POSTGRES_PASSWORD: constructora_password
+    ports:
+      - "43216:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
