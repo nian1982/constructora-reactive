@@ -5,4 +5,9 @@ CREATE TABLE IF NOT EXISTS materiales (
     cantidad INT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS construcciones (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL UNIQUE
+);
+
 

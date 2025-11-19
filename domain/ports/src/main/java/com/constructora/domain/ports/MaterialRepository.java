@@ -13,5 +13,5 @@ public interface MaterialRepository {
 
     Mono<Void> deleteById(Long id);
 
-    Mono<Material> findByNombre(String nombre); // Método para la restricción de unicidad
+    Mono<Material> findByNombre(String nombre);
 }

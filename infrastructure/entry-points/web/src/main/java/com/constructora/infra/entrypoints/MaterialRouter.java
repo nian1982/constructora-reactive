@@ -14,7 +14,8 @@ public class MaterialRouter {
         return route()
                 .path("/api/materiales", builder -> builder
                         .POST(handler::crear)
-                        .GET(handler::listar)
-                ).build();
+                        .GET("/{id}", handler::obtener)
+                        .GET(handler::listar))
+                .build();
     }
 }
