@@ -11,6 +11,7 @@ public class ConstruccionEntity {
     @Id
     private Long id;
     private String nombre;
+    private int dias;
 
     public ConstruccionEntity() {
     }
@@ -35,6 +36,14 @@ public class ConstruccionEntity {
         this.nombre = nombre;
     }
 
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -55,6 +64,8 @@ public class ConstruccionEntity {
         return "MaterialEntity{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", dias='" + dias + '\'' +
                 '}';
     }
+
 }

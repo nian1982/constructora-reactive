@@ -6,10 +6,12 @@ public class Construccion {
 
     private Long id;
     private String nombre;
+    private int dias;
 
-    public Construccion(Long id, String nombre) {
+    public Construccion(Long id, String nombre, int dias) {
         this.id = id;
         this.nombre = nombre;
+        this.dias = dias;
     }
 
     public Long getId() {
@@ -18,6 +20,10 @@ public class Construccion {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public int getDias() {
+        return dias;
     }
 
     @Override

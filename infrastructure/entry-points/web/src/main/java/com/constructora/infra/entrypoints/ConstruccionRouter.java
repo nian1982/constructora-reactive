@@ -11,10 +11,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class ConstruccionRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> rutasConstruccion(ConstruccionHandler handler){
+    public RouterFunction<ServerResponse> rutasConstruccion(ConstruccionHandler handler) {
         return route()
                 .path("/api/construcciones", builder -> builder
-                .GET(handler::listar))
+                        .GET("/{id}", handler::obtener)
+                        .GET(handler::listar))
                 .build();
     }
 }

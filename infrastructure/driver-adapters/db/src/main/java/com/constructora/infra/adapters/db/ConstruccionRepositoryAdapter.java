@@ -24,7 +24,7 @@ public class ConstruccionRepositoryAdapter implements ConstruccionRepository {
     }
 
     private Construccion toDomain(ConstruccionEntity entity) {
-        Construccion construccion = new Construccion(entity.getId(), entity.getNombre());
+        Construccion construccion = new Construccion(entity.getId(), entity.getNombre(), entity.getDias());
         return construccion;
     }
 

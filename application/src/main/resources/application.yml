@@ -7,7 +7,7 @@ spring:
     password: constructora_password
   sql:
     init:
-      mode: always # Crea el schema cada vez que se inicia la app (útil para desarrollo)
+      mode: never # Crea el schema cada vez que se inicia la app (útil para desarrollo)
       schema-locations: classpath:schema.sql
       # <-- CAMBIA 'always/never' POR 'never'
       # schema-locations: classpath:schema.sql # <-- Puedes comentar o borrar esta línea
