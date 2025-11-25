@@ -10,7 +10,7 @@
     > `docker compose up -d`
 * Cambiar la configuración de __application.yml__ 
     > Cambiar el valor de `mode: never` a `mode: always` 
-    > Si se quiere ejecutar nuevamente despues de una primera ejecucion, cambiar el valor de `mode: always` a `mode: never`
+    > Si se quiere ejecutar nuevamente despues de una primera ejecucion, cambiar el valor de `mode: always` a `mode: never` 
 * Ejecutar gradle bootRun
     > `./gradlew :app-main:bootRun`
     > `o desde un editor de codigo con su correspondiente boton de ejecución`
@@ -22,17 +22,23 @@
 * curl http://localhost:8080/api/materiales | jq
 * curl http://localhost:8080/api/ordenes | jq
 * curl http://localhost:8080/api/ordenes/fecha-fin-proyecto | jq
+* curl http://localhost:8080/api/ordenes/reporte-construcciones | jq
 
 ## POST
 * curl -X POST http://localhost:8080/api/ordenes -H "Content-Type: application/json" -H "rol: Arquitecto" -d '{"coordenadaX": 10.0, "coordenadaY": 20.0, "construccionId": 1}'
+
 ## Validación con rol de creación
 * curl -X POST http://localhost:8080/api/ordenes -H "Content-Type: application/json" -H "rol: Arquitecto" -d '{"coordenadaX": 30.0, "coordenadaY": 40.0, "construccionId": 9}'
+
 ## Validacion con otro rol
 * curl -X POST http://localhost:8080/api/ordenes -H "Content-Type: application/json" -H "rol: Ingeniero" -d '{"coordenadaX": 70.0, "coordenadaY": 80.0, "construccionId": 9}'
+
 ## validación sin la cabecera de rol
 * curl -X POST http://localhost:8080/api/ordenes -H "Content-Type: application/json" -d '{"coordenadaX": 90.0, "coordenadaY": 100.0, "construccionId": 9}'
+
 ## Validación de coordenadas existentes
 * Ejecutar una solicitud con las mismas coordenadas de una solicitud existente
+
 ## VAlidacion de falta de materiales
 * Ejecutar una solicitud con una construccion que requiere mas materiales de los disponibles
 * En su defecto, ejecutar la misma solicitud varias veces hasta agotar los materiales

@@ -66,4 +66,12 @@ public class UseCaseConfig {
     public ListarOrdenesUseCase listarOrdenesUseCase(OrdenRepository ordenRepository) {
         return new ListarOrdenesUseCase(ordenRepository);
     }
+
+    @Bean
+    public GenerarReporteConstruccionesUseCase generarReporteConstruccionesUseCase(
+            OrdenRepository ordenRepository,
+            ConstruccionRepository construccionRepository) {
+        return new GenerarReporteConstruccionesUseCase(ordenRepository, construccionRepository);
+    }
+
 }

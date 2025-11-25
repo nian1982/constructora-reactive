@@ -12,4 +12,8 @@ public interface OrdenRepository {
     Mono<Orden> findLastEndingOrder();
 
     Flux<Orden> findAll();
+
+    Mono<Long> countByEstado(String estado);
+
+    Flux<Orden> findCompletedOrdersWithConstruccion();
 }

@@ -39,6 +39,17 @@ public class OrdenRepositoryAdapter implements OrdenRepository {
                 .map(this::toDomain);
     }
 
+    @Override
+    public Mono<Long> countByEstado(String estado) {
+        return r2dbcOrdenRepository.countByEstado(estado);
+    }
+
+    @Override
+    public Flux<Orden> findCompletedOrdersWithConstruccion() {
+        return r2dbcOrdenRepository.findCompletedOrdersWithConstruccion()
+                .map(this::toDomain);
+    }
+
     private OrdenEntity toEntity(Orden orden) {
         return new OrdenEntity(
                 orden.getId(),

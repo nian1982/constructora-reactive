@@ -14,9 +14,11 @@ public class OrdenRouter {
     public RouterFunction<ServerResponse> rutasOrden(OrdenHandler handler) {
         return route()
                 .path("/api/ordenes", builder -> builder
+                        .GET("/fecha-fin-proyecto", handler::consultarFechaFin)
+                        .GET("/reporte-construcciones", handler::generarReporte)
                         .GET(handler::listar)
-                        .POST(handler::crear)
-                        .GET("/fecha-fin-proyecto", handler::consultarFechaFin))
+                        .POST(handler::crear))
+
                 .build();
     }
 }

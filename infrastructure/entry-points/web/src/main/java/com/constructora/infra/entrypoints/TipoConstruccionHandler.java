@@ -4,46 +4,41 @@ package com.constructora.infra.entrypoints;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;     
+import reactor.core.publisher.Mono;
 import org.springframework.http.MediaType;
+import com.constructora.domain.model.ApiResponse;
 import com.constructora.domain.model.TipoConstruccion;
 import com.constructora.domain.usecases.ListarTipoConstruccionUseCase;
 
+import java.util.List;
 
-@Component  
+@Component
 public class TipoConstruccionHandler {
 
     private final ListarTipoConstruccionUseCase listarTipoConstruccionUseCase;
-    
+
     public TipoConstruccionHandler(ListarTipoConstruccionUseCase listarTipoConstruccionUseCase) {
         this.listarTipoConstruccionUseCase = listarTipoConstruccionUseCase;
-    }   
-
-//     public Mono<ServerResponse> crear(ServerRequest request) {
-//         Mono<TipoConstruccion> tipoConstruccionMono = request.bodyToMono(TipoConstruccion.class);
-//         return tipoConstruccionMono.flatMap(crearTipoConstruccionUseCase::execute)
-//                 .flatMap(tipoConstruccion -> ServerResponse.ok()
-//                         .contentType(MediaType.APPLICATION_JSON)
-//                         .bodyValue(tipoConstruccion))
-//                 .onErrorResume(e -> ServerResponse.badRequest().bodyValue(e.getMessage()));
-//     }
-
-    public Mono<ServerResponse> listar(ServerRequest request) {
-        return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(listarTipoConstruccionUseCase.execute(), TipoConstruccion.class);
     }
 
-//     public Mono<ServerResponse> obtener(ServerRequest request) {
-//         Long id = Long.valueOf(request.pathVariable("id"));
+    public Mono<ServerResponse> listar(ServerRequest request) {
+        String url = request.path();
 
-//         return obtenerTipoConstruccionUseCase.execute(id)
-//                 .flatMap(tipoConstruccion -> ServerResponse.ok()
-//                         .contentType(MediaType.APPLICATION_JSON)
-//                         .bodyValue(tipoConstruccion))
-//                 .onErrorResume(e -> ServerResponse.badRequest()
-//                         .contentType(MediaType.APPLICATION_JSON)
-//                         .bodyValue(e.getMessage()));
-//     }   
+        return listarTipoConstruccionUseCase.execute()
+                .collectList()
+                .flatMap(tipos -> {
+                    ApiResponse<List<TipoConstruccion>> response = ApiResponse.success(200, url,
+                            "Tipos de construcción obtenidos exitosamente", tipos);
+                    return ServerResponse.ok()
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .bodyValue(response);
+                })
+                .onErrorResume(e -> {
+                    ApiResponse<Void> response = ApiResponse.error(500, url, e.getMessage());
+                    return ServerResponse.status(500)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .bodyValue(response);
+                });
+    }
 
 }
