@@ -8,6 +8,9 @@
 # INSTRUCCIONES
 * Ejecutar docker compose
     > `docker compose up -d`
+* Cambiar la configuración de __application.yml__ 
+    > Cambiar el valor de `mode: never` a `mode: always` 
+    > Si se quiere ejecutar nuevamente despues de una primera ejecucion, cambiar el valor de `mode: always` a `mode: never`
 * Ejecutar gradle bootRun
     > `./gradlew :app-main:bootRun`
     > `o desde un editor de codigo con su correspondiente boton de ejecución`
