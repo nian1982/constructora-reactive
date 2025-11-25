@@ -6,9 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
-    "com.constructora.domain.usecases",
-    "com.constructora.infra.entrypoints",
-    "com.constructora.infra.adapters.db" // Este paquete ahora contiene la clase del adaptador
+        "com.constructora.domain.usecases",
+        "com.constructora.infra.entrypoints",
+        "com.constructora.infra.adapters.db",
+        "com.constructora.config"
 })
 public class MainApplication {
 

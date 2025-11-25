@@ -37,6 +37,13 @@ public class Material {
         return cantidad;
     }
 
+    public void descontar(Integer cantidadADescontar) {
+        if (this.cantidad < cantidadADescontar) {
+            throw new IllegalArgumentException("No hay suficiente material: " + this.nombre);
+        }
+        this.cantidad -= cantidadADescontar;
+    }
+
     // equals y hashCode basados en el id o en un campo único como nombre
     @Override
     public boolean equals(Object o) {

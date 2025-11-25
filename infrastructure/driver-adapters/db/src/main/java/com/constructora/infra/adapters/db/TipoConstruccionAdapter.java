@@ -58,4 +58,10 @@ public class TipoConstruccionAdapter implements TipoConstruccionRepository {
         return r2dbTipoConstruccionRepository.deleteById(id);
     }
 
+    @Override
+    public Flux<TipoConstruccion> findByConstruccionId(Long construccionId) {
+        return r2dbTipoConstruccionRepository.findByConstruccionId(construccionId)
+                .map(this::toDomain);
+    }
+
 }

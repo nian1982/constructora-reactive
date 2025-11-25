@@ -15,4 +15,6 @@ public interface TipoConstruccionRepository {
 
     Mono<Void> deleteById(Long id);
 
+    Flux<TipoConstruccion> findByConstruccionId(Long construccionId);
+
 }

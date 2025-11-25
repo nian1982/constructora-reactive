@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS materiales (
 
 CREATE TABLE IF NOT EXISTS construcciones (
     id BIGSERIAL PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL UNIQUE
+    nombre VARCHAR(255) NOT NULL UNIQUE,
     dias INTEGER
 );
 
@@ -30,5 +30,7 @@ CREATE TABLE IF NOT EXISTS solicitudes (
     CONSTRAINT fk_solicitud_construccion
         FOREIGN KEY (construccion_id) REFERENCES construcciones(id)
 );
+
+
 
 
