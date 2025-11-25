@@ -15,7 +15,6 @@ public class MaterialRepositoryAdapter implements MaterialRepository {
         this.r2dbcMaterialRepository = r2dbcMaterialRepository;
     }
 
-    // Método para mapear de Entity de Dominio a Entity de BD
     private MaterialEntity toEntity(Material material) {
         MaterialEntity entity = new MaterialEntity();
         entity.setId(material.getId());
@@ -25,23 +24,20 @@ public class MaterialRepositoryAdapter implements MaterialRepository {
         return entity;
     }
 
-    // Método para mapear de Entity de BD a Entity de Dominio
     private Material toDomain(MaterialEntity entity) {
-        Material material = new Material();
-        material.setId(entity.getId());
-        material.setNombre(entity.getNombre());
-        material.setSigla(entity.getSigla());
-        material.setCantidad(entity.getCantidad());
+        Material material = new Material(
+                entity.getId(),
+                entity.getNombre(),
+                entity.getSigla(),
+                entity.getCantidad());
+
         return material;
     }
 
     @Override
-    public Mono<Material> save(Material material) {
-        // 1. Convertir el Material de dominio a MaterialEntity
+    public Mono<Material> save(Material material) {        
         MaterialEntity entityToSave = toEntity(material);
-        // 2. Guardar la Entity usando el repositorio de Spring
         return r2dbcMaterialRepository.save(entityToSave)
-                // 3. Convertir el resultado de vuelta a Material de dominio
                 .map(this::toDomain);
     }
 

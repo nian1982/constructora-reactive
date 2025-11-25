@@ -14,6 +14,22 @@ public class TipoConstruccion {
         this.cantidad = cantidad;
         this.construccion = construccion;
         this.material = material;
-    }   
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public Construccion getConstruccion() {
+        return construccion;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
 
 }

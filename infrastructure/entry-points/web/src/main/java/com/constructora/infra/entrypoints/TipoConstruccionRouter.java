@@ -7,15 +7,15 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class MaterialRouter {
+public class TipoConstruccionRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> rutasMateriales(MaterialHandler handler) {
+    public RouterFunction<ServerResponse> rutasTipoConstruccion(TipoConstruccionHandler handler) {
         return route()
-                .path("/api/materiales", builder -> builder
-                        .POST(handler::crear)
-                        .GET("/{id}", handler::obtener)
+                .path("/api/tipos-construccion", builder -> builder
+                        // .POST(handler::crear)
+                        // .GET("/{id}", handler::obtener)
                         .GET(handler::listar))
                 .build();
     }
-}   
+}

@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import java.util.Objects;
 
-// Esta clase vive en infraestructura y puede tener anotaciones del framework.
 @Table("materiales")
 public class MaterialEntity {
 
@@ -13,9 +12,6 @@ public class MaterialEntity {
     private String nombre;
     private String sigla;
     private Integer cantidad;
-
-    // Constructores, getters, setters, equals, hashCode y toString
-    // Puedes copiarlos de tu clase Material de dominio.
 
     public MaterialEntity() {}
 

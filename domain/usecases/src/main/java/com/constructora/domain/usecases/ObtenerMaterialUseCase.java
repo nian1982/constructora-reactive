@@ -1,13 +1,10 @@
 package com.constructora.domain.usecases;
 
-import org.springframework.stereotype.Service;
-
 import com.constructora.domain.model.Material;
 import com.constructora.domain.ports.MaterialRepository;
 
 import reactor.core.publisher.Mono;
 
-@Service
 public class ObtenerMaterialUseCase {
 
     private final MaterialRepository materialRepository;

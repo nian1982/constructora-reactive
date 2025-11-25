@@ -13,7 +13,8 @@ public class Material {
     }
 
     // Constructor con campos (excepto id que es auto-generado)
-    public Material(String nombre, String sigla, Integer cantidad) {
+    public Material(Long id, String nombre, String sigla, Integer cantidad) {
+        this.id = id;
         this.nombre = nombre;
         this.sigla = sigla;
         this.cantidad = cantidad;
@@ -24,32 +25,16 @@ public class Material {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getSigla() {
         return sigla;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
     public Integer getCantidad() {
         return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
     }
 
     // equals y hashCode basados en el id o en un campo único como nombre

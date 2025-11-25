@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import java.util.Objects;
 
-// Esta clase vive en infraestructura y puede tener anotaciones del framework.
 @Table("construcciones")
 public class ConstruccionEntity {
 
